@@ -2,10 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const nayoks = ['Rubel', 'BappaRaz'];
+  const nayoksObject = [
+    {
+      name: 'Rubel',
+      naika: 'Sabana'
+    },
+    {
+      name: 'BappaRaz',
+      naika: 'Purnima'
+    }
+  ];
   return (
     <div className="App">
-      <Person name="Rubel" nayika="Sabana"></Person>
-      <Person name="BappaRaz" nayika="purnima"></Person>
+      {
+        nayoksObject.map(nayok => <Person name={nayok.name} nayika={nayok.naika}></Person>)
+      }
       <hr />
       <h6>New Component</h6>
       <Friend actor="Ajay devgun" phone="017777"></Friend>
