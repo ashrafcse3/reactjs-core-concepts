@@ -1,27 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   return (
     <div className="App">
-      <Counter></Counter>
+      <ExternalUsers></ExternalUsers>
     </div >
   );
 }
 
-function Counter() {
-  const [count, setCount] = useState(5);
+function ExternalUsers() {
+  const [users, setUsers] = useState([]);
 
-  const increaseCount = () => setCount(count + 1);
-  const decreaseCount = () => setCount(count - 1);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => setUsers(data))
+  }, []);
+  console.log(users);
 
   return (
     <div>
-      <h1>{count}</h1>
-      <button onClick={increaseCount}>Increase +</button>
-      <button onClick={decreaseCount}>Decrease -</button>
+      <h1>Users from jsonPlaceHolder</h1>
+      {
+        users.map(user => <UserDetails name="user.name" website={user.website} phone={user.phone} city={user.address.city}></UserDetails>)
+      }
+    </div>
+  );
+}
+
+function UserDetails(props) {
+  return (
+    <div className='container'>
+      <h1>Name: {props.name}</h1>
+      <h3>City: {props.city}</h3>
+      <h3>Phone: {props.phone}</h3>
+      <p>Website: {props.website}</p>
     </div>
   );
 }
