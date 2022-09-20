@@ -4,31 +4,32 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Person></Person>
-      <Person></Person>
+      <Person name="Rubel" nayika="Sabana"></Person>
+      <Person name="BappaRaz" nayika="purnima"></Person>
       <hr />
       <h6>New Component</h6>
-      <Friend></Friend>
-      <Friend></Friend>
-      <Friend></Friend>
+      <Friend actor="Ajay devgun" phone="017777"></Friend>
+      <Friend actor="Salman khan" phone="019999"></Friend>
     </div >
   );
 }
 
-function Person() {
+function Person(props) {
+  // console.log(props);
   return (
     <div className='person'>
-      <h1>Sakib Al Hasan</h1>
-      <h3>Profession: Cricket</h3>
+      <h1>{props.name}</h1>
+      <h3>Naika: {props.nayika}</h3>
     </div>
   );
 }
 
-function Friend() {
+function Friend(props) {
+  // console.log(props);
   return (
     <div className='container'>
-      <h3>Name: Ajay Devgun</h3>
-      <p>job: Maramari</p>
+      <h3>Name: {props.actor}</h3>
+      <p>phone: {props.phone}</p>
     </div>
   );
 }
