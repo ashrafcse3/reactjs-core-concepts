@@ -1,47 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  const nayoks = ['Rubel', 'BappaRaz'];
-  const nayoksObject = [
-    {
-      name: 'Rubel',
-      naika: 'Sabana'
-    },
-    {
-      name: 'BappaRaz',
-      naika: 'Purnima'
-    }
-  ];
+
   return (
     <div className="App">
-      {
-        nayoksObject.map(nayok => <Person name={nayok.name} nayika={nayok.naika}></Person>)
-      }
-      <hr />
-      <h6>New Component</h6>
-      <Friend actor="Ajay devgun" phone="017777"></Friend>
-      <Friend actor="Salman khan" phone="019999"></Friend>
+      <Counter></Counter>
     </div >
   );
 }
 
-function Person(props) {
-  // console.log(props);
-  return (
-    <div className='person'>
-      <h1>{props.name}</h1>
-      <h3>Naika: {props.nayika}</h3>
-    </div>
-  );
-}
+function Counter() {
+  const [count, setCount] = useState(5);
 
-function Friend(props) {
-  // console.log(props);
+  const increaseCount = () => setCount(count + 1);
+  const decreaseCount = () => setCount(count - 1);
+
   return (
-    <div className='container'>
-      <h3>Name: {props.actor}</h3>
-      <p>phone: {props.phone}</p>
+    <div>
+      <h1>{count}</h1>
+      <button onClick={increaseCount}>Increase +</button>
+      <button onClick={decreaseCount}>Decrease -</button>
     </div>
   );
 }
